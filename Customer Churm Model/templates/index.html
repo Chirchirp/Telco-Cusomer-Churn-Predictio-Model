@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Churn Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Referred a Friend:</label>
+                    <select name="referred_friend">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Referrals:</label>
+                    <input type="number" name="number_of_referrals" min="0" max="10" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label>Tenure (Months):</label>
+                    <input type="number" name="tenure" value="24">
+                </div>
+
+                <div class="form-group">
+                    <label>Offer:</label>
+                    <select name="offer">
+                        <option value="None">None</option>
+                        <option value="Discount">Discount</option>
+                        <option value="Bundle">Bundle</option>
+                        <option value="Loyalty">Loyalty</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Service:</label>
+                    <select name="phone_service">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Avg Monthly LD Charges:</label>
+                    <input type="number" name="avg_monthly_ld_charges" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Multiple Lines:</label>
+                    <select name="multiple_lines">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Internet Service:</label>
+                    <select name="internet_service">
+                        <option value="DSL">DSL</option>
+                        <option value="Fiber optic">Fiber optic</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Internet Type:</label>
+                    <select name="internet_type">
+                        <option value="Cable">Cable</option>
+                        <option value="Fiber">Fiber</option>
+                        <option value="DSL">DSL</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Avg Monthly GB Download:</label>
+                    <input type="number" name="avg_monthly_gb_download" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Contract:</label>
+                    <select name="contract">
+                        <option value="0">Month-to-month</option>
+                        <option value="1">One year</option>
+                        <option value="2">Two year</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method:</label>
+                    <select name="payment_method">
+                        <option value="Bank transfer">Bank transfer</option>
+                        <option value="Credit card">Credit card</option>
+                        <option value="Electronic check">Electronic check</option>
+                        <option value="Mailed check">Mailed check</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Monthly Charge:</label>
+                    <input type="number" name="monthly_charge" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Total Charges:</label>
+                    <input type="number" name="total_charges" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Total Refunds:</label>
+                    <input type="number" name="total_refunds" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Total Extra Data Charges:</label>
+                    <input type="number" name="total_extra_data_charges" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Total LD Charges:</label>
+                    <input type="number" name="total_ld_charges" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Total Revenue:</label>
+                    <input type="number" name="total_revenue" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <select name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="number" name="age" value="35">
+                </div>
+
+                <div class="form-group">
+                    <label>Under 30:</label>
+                    <select name="under_30">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Senior Citizen:</label>
+                    <select name="senior_citizen">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Married:</label>
+                    <select name="married">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Churn Score:</label>
+                    <input type="number" name="churn_score" step="0.01" value="0.0">
+                </div>
+
+                <div class="form-group">
+                    <label>Contract Period:</label>
+                    <input type="number" name="contract_period" value="12">
+                </div>
+
+                <div class="form-group">
+                    <label>Contract Tenure Ratio:</label>
+                    <input type="number" name="contract_tenure_ratio" step="0.01" value="0.5">
+                </div>
+            </div>
+
+            <button type="submit">Predict Churn</button>
+        </form>
+
+        {% if prediction %}
+            <h2>{{ prediction }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
